@@ -18,7 +18,7 @@ PER_MIN = 0.5
 PER_MAX = 1.5
 
 
-def simulation_1(percent_dataframe, port_df):
+def buy_percent_sell_percent(percent_dataframe, port_df):
     buying_power = INIT_BUYINGP
     for index, row in percent_dataframe.iterrows():
         week = index + 1
