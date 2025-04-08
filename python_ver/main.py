@@ -2,6 +2,7 @@ import random
 import pandas as pd
 import copy
 import csv
+import matplotlib.pyplot as plt
 
 
 # Define number of weeks to run
@@ -149,7 +150,13 @@ for index, row in percent_dataframe.iterrows():
             port_df.loc[len(port_df)] = [
                 week, buying_power, stock, new_shares, new_price, new_equity]
 
+# Output reporting
 print(port_df)
+summary_df = port_df.groupby(["WEEK"])["EQUITY"].sum()
+print(summary_df)
+plot = summary_df.plot.bar(title=f"Equity over {WEEKS} Weeks", x="WEEK",
+                           y="EQUITY")
+plt.show()
 starting_eq = port_df[port_df["WEEK"] == 0]
 ending_eq = port_df[port_df["WEEK"] == WEEKS]
 starting_eq = starting_eq["EQUITY"].sum()
