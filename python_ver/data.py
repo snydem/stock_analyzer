@@ -25,3 +25,22 @@ def generate_random_data(stocks: int, weeks: int, stock_min: float,
 
     percent_dataframe = pd.DataFrame(percent_dict)
     return percent_dataframe, price_dict
+
+
+def get_stock_data(*ticker_list, start, end):
+    # Move Start and end to the nearest Monday and Friday respectively
+    adjusted_start = move_to_monday() # Market Open
+    adjusted_end = move_to_friday() # Market Close
+    # Get the number of weeks between these two dates
+    weeks = number_of_weeks(adjusted_start, adjusted_end)
+
+    # loop through the ticker list and for each ticker
+    for ticker in ticker_list:
+        # loop through the weeks between the start and end date
+        for week in range(weeks):
+            # Get the percent change in the stock between market open and close
+            # for the whole week. I.E. Market open on Monday and market close
+            # on Friday.
+            pass
+        pass
+    pass
